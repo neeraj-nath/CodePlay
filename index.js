@@ -1,16 +1,24 @@
 const express=require('express');
+const cookieParser= require('cookie-parser');
 const port=8000;
 const app= express();
 const expressLayouts= require('express-ejs-layouts');
 const db= require('./config/mongoose');
+
+
+app.use(express.urlencoded());
+app.use(cookieParser()); 
+
+app.use(express.static('assets'));
 app.use(expressLayouts);
-app.use(express.static('assets'))
+
+//To extract the style and script from the body of pages and place it in the head of the layout page.
+app.set("layout extractScripts", true);
+app.set("layout extractStyles", true);
 //to use express router:
 app.use('/', require('./routes'));
 
 
-app.set("layout extractScripts", true);
-app.set("layout extractStyles", true);
 // To set the view engine:
 app.set('view engine', 'ejs');
 app.set('views','./views');
