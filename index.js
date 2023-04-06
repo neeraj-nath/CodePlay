@@ -4,6 +4,11 @@ const port=8000;
 const app= express();
 const expressLayouts= require('express-ejs-layouts');
 const db= require('./config/mongoose');
+const session= require('express-session'); //this is responsible for AUTOMATICALLY encrypting the key.
+const passport=require('passport');
+const passportLocal= require('./config/passport-local-strategy');
+const MongoStore= require('connect-mongo'); 
+//above code to store session cookie in mongo db
 
 
 app.use(express.urlencoded());
@@ -15,13 +20,41 @@ app.use(expressLayouts);
 //To extract the style and script from the body of pages and place it in the head of the layout page.
 app.set("layout extractScripts", true);
 app.set("layout extractStyles", true);
-//to use express router:
-app.use('/', require('./routes'));
+
+
+
 
 
 // To set the view engine:
 app.set('view engine', 'ejs');
 app.set('views','./views');
+
+app.use(session({
+    name:'codeial',
+    //todo change secret before deploymenrt in prd  mode
+    secret: 'blahsomething',
+    saveUninitialized:false,
+    resave:false,
+    cookie:{
+        maxAge:(1000*60*100)
+    },
+    store: MongoStore.create({
+        mongoUrl: 'mongodb://127.0.0.1:27017/codeial_development' ,
+        autoRemove:'disabled'
+    },function(error){
+        console.log(err || "connect-mongo setup done");
+    }
+    )
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+//to make the current user available:
+app.use(passport.setAuthenticatedUser);//using this will also make user.name entry valid in views page-->profile.
+
+//to use express router:
+app.use('/', require('./routes'));
 
 app.listen(port, function(error){
     if (error){
