@@ -1,4 +1,7 @@
 const mongoose= require('mongoose');
+
+
+
 // this page has been created to create a SCHEMA for the database
 const userSchema= new mongoose.Schema({
     email:{
