@@ -8,4 +8,5 @@ const commentController= require('../controllers/comments_controller');
 router.post('/create',passport.checkAuthenticaton,commentController.create);
 
 
+
 module.exports= router;

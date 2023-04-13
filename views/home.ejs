@@ -32,6 +32,11 @@
                         </p>
                         <p>
                             <%= post.content %>
+                            <% if (locals.user && locals.user.id==post.user.id) {%>
+                                <a href="/posts/destroy/<%= post.id %>">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                            <% } %>
                         </p>
                         <div class="post-comments">
                             <% if(locals.user){ %>
