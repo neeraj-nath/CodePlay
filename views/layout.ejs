@@ -5,20 +5,68 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%-style %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/aside.css">
     <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/flash-msgs.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/main-display.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
     <script src="https://kit.fontawesome.com/f6d34634c2.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
     <%- include('_header') %>
     <%- include('aside') %>
+ 
+    
+        
+    
 
     <%- body %>
 
     <%- include('_footer') %>
+    <script>
+        <% if(flash.success && flash.success.length > 0 ) { %>
+            
+            new Noty({
+                theme:'sunset',
+                text: '<%= flash.success %>',
+                type: 'success',
+                layout: 'topRight',
+                timeout:2000
+
+            }).show();
+            
+        <% } %>
+
+        // <% if(flash.info && flash.info.length > 0 ) { %>
+            
+        //     new Noty({
+        //         theme:'sunset',
+        //         text: '<%= flash.info %>',
+        //         type: 'alert',
+        //         layout: 'topRight',
+        //         timeout:2000
+
+        //     }).show();
+            
+        // <% } %>
+
+        <% if(flash.error && flash.error.length > 0 ) { %>
+            
+            new Noty({
+                theme:'sunset',
+                text: '<%= flash.error %>',
+                type: 'error',
+                layout: 'topRight',
+                timeout:2000
+
+            }).show();
+            
+        <% } %>
+        
+    </script>
 </body>
 </html>

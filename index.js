@@ -10,6 +10,9 @@ const passportLocal= require('./config/passport-local-strategy');
 const MongoStore= require('connect-mongo'); 
 //above code to store session cookie in mongo db
 const sassMiddleware= require('node-sass-middleware');
+const flash = require('connect-flash');
+const customMiddleWare= require('./config/middleware');
+
 
 app.use(sassMiddleware({
     src:'./assets/scss',
@@ -56,6 +59,8 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
+app.use(customMiddleWare.setFlash);
 
 //to make the current user available:
 app.use(passport.setAuthenticatedUser);//using this will also make user.name entry valid in views page-->profile.

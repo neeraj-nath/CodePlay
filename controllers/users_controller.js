@@ -3,11 +3,32 @@ const User= require('../models/user');
 module.exports.profile= function(req,res){
     // console.log(User);
     // console.log(req);
-    return res.render("profile.ejs",{
-        title:'Profile'
+    User.findById(req.params.id).then(function(user){
+        return res.render("profile.ejs",{
+            title:'Profile',
+            profile_user:user,
+    })
+    })
+    .catch( function( error){
+        console.log("Looks there was some Error while trying to fetch the profile");
+        return;
     });
 }
-
+module.exports.update= function(req,res){
+    if (req.params.id == req.user.id){
+        User.findByIdAndUpdate(req.params.id, {name:req.body.name, email: req.body.email})
+        .then(function(error){
+            return res.redirect('back');
+        })
+        .catch(function(error){
+            console.log("error occured while trying to update user details");
+            return;
+        })
+    }
+    else{
+        return res.status(401).send("Unauthorised");
+    }
+}
 module.exports.signIn= function(req,res){
     if(req.isAuthenticated()){
         return res.redirect('/users/profile');
@@ -46,7 +67,8 @@ module.exports.create= function(req,res){
 }
 //to create signin session and redirect page:
 module.exports.createSession=function(req,res){
-    return res.redirect('/users/profile');
+    req.flash('success', "You are now Logged In!");
+    return res.redirect('/');
 }
 
 module.exports.sessionOut=function(req,res){

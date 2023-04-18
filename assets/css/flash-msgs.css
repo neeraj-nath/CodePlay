@@ -1,0 +1,7 @@
+#flash-msgs {
+  position: sticky;
+  top: 200px;
+  text-transform: capitalize;
+  color: whitesmoke;
+  background-color: darkgrey;
+  font-size: x-large; }

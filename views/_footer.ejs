@@ -6,9 +6,10 @@
         <p>
             <a href="/">Go Home</a>
         </p>
+        <% if (locals.user) {%>
         <p> 
-            <a href="/users/profile">Profile</a>
-        
+            <a href="/users/profile/<%=locals.user.id%>">Profile</a>
         </p>
+        <% } %>
     </p>
 </footer>

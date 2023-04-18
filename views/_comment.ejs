@@ -1,0 +1,34 @@
+
+<% if(locals.user){ %>
+    <form action="/comments/create" method="POST">
+        <input type="text" name="content" placeholder="Comment Here..." required>
+        <!-- IMP NOTE:The below input field takes in the post id to store in DB and is hidden -->
+        <input type="hidden" name="post" value="<%= post._id%>">
+        <input type="submit" value="Add Comment">
+    </form>
+<% } %>
+
+<div class="post-comments-list">
+    <ul id="post-comments-<%= post._id %>">
+        <% for(comment of post.comments) { %>
+            <li>
+                <p>
+                    <%= comment.user.name %> commented:
+                </p>
+                <p>
+                    <%= comment.content %>
+                    <% if (locals.user && locals.user.id==comment.user.id) {%>
+                        <a href="/comments/destroy/<%= comment.id %>">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    <% } %>
+                    
+                </p>
+
+
+            </li>
+            
+        <% } %>
+
+    </ul>
+</div>

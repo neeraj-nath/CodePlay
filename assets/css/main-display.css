@@ -1,4 +1,20 @@
 #main-display {
-  margin-top: 100px; }
+  display: flex;
+  margin-top: 90px;
+  margin-bottom: 100px;
+  text-align: center; }
+  #main-display li {
+    list-style: none; }
   #main-display h1 {
     display: inline-block; }
+  #main-display #center-display {
+    width: 70%;
+    padding: 20px;
+    border-right: 2px dashed slategray; }
+  #main-display #user-list {
+    height: 100%;
+    width: 30%;
+    padding: 20px; }
+    #main-display #user-list a {
+      text-decoration: none;
+      color: black; }

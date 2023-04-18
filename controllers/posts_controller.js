@@ -1,18 +1,26 @@
 const Post=require('../models/post')
 const Comment = require('../models/comment');
 
-module.exports.create=function(req,res){
+module.exports.create= async function(req,res){
+    // const newPost= new Post({
+    //     content: req.body.content,
+    //     user: req.user.id
+    // });
+    // newPost.save().then(function(post){
+    //     return res.redirect('back');
+    // })
+    // .catch(function(error){
+    //     console.log('There occured some error while trying to add the post to the database:', error);
+    //     return;
+    // })
     const newPost= new Post({
         content: req.body.content,
         user: req.user.id
     });
-    newPost.save().then(function(post){
-        return res.redirect('back');
-    })
-    .catch(function(error){
-        console.log('There occured some error while trying to add the post to the database:', error);
-        return;
-    })
+    await newPost.save();
+
+    req.flash('success',"Your Post has been Published!!");
+    return res.redirect('back')
 };
 
 module.exports.destroy= function(req,res){
@@ -31,7 +39,7 @@ module.exports.destroy= function(req,res){
         }
     ).catch(
         function(error){
-            console.log("Some error occured while trying to delete the Post", error);
+            req.flash('error', 'Failed to delete the Post')
             return res.redirect('back');
         }
     )

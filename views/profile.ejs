@@ -1,9 +1,21 @@
 
 <div id="main-display">
     <h1>
-        Hey <%= user.name%>
+        Hey <%= profile_user.name%>
     </h1>
     <h2>
-        <%= user.email%>
+        <%= profile_user.email%>
     </h2>
+
+    <% if (locals.user.id==profile_user.id) {%>
+        <div>
+            <form action="/users/update/<%= profile_user.id %>" method="POST">
+                <input type="text" name="name" placeholder="Your Name" id="" required>
+                <br><br>
+                <input type="text" name="email" placeholder="Your email" required>
+                <br><br>
+                <input type="submit" value="Update">
+            </form>
+        </div>
+    <% } %>
 </div>
