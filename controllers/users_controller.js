@@ -14,20 +14,55 @@ module.exports.profile= function(req,res){
         return;
     });
 }
-module.exports.update= function(req,res){
-    if (req.params.id == req.user.id){
-        User.findByIdAndUpdate(req.params.id, {name:req.body.name, email: req.body.email})
-        .then(function(error){
-            return res.redirect('back');
-        })
-        .catch(function(error){
-            console.log("error occured while trying to update user details");
-            return;
-        })
+module.exports.update= async function(req,res){
+    // if (req.params.id == req.user.id){
+    //     User.findByIdAndUpdate(req.params.id, {name:req.body.name, email: req.body.email})
+    //     .then(function(error){
+    //         return res.redirect('back');
+    //     })
+    //     .catch(function(error){
+    //         console.log("error occured while trying to update user details");
+    //         return;
+    //     })
+    // }
+    // else{
+    //     return res.status(401).send("Unauthorised");
+    // }
+
+    //****changing the above because of using multer as part of file uploading:
+    try{
+        if (req.params.id == req.user.id){
+            const user = await User.findById(req.params.id);
+            console.log(user);
+            User.uploadedAvatar(req,res, function(error){
+                console.log("inside the uploaded avatar block");
+                if (error){console.log("<<<MULTER ERROR>>>:",error); return;};
+                //console.log("the request is",req);
+                console.log(req.file);
+                user.name = req.body.name;
+                user.email = req.body.email;
+    
+                if (req.file){
+                    //this is saving the path of the uploaded file to the avatar field in the user database
+                    user.avatar = User.avatarPath +"/"+req.file.filename ;
+                }
+                user.save().then(function(){
+                    return res.redirect('back');
+                })
+                
+    
+    
+            })
+    
+        }
+        else{
+            return res.status(401).send("Unauthorised");
+        }
+    }catch(error){
+        console.log("error caught in update catch block", error);
+        return res.redirect('back');
     }
-    else{
-        return res.status(401).send("Unauthorised");
-    }
+    
 }
 module.exports.signIn= function(req,res){
     if(req.isAuthenticated()){

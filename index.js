@@ -25,6 +25,8 @@ app.use(express.urlencoded());
 app.use(cookieParser()); 
 
 app.use(express.static('assets'));
+//making upload path available to browsers OR creating a path for uploads
+app.use("/uploads",express.static(__dirname+'/uploads'));
 app.use(expressLayouts);
 
 //To extract the style and script from the body of pages and place it in the head of the layout page.

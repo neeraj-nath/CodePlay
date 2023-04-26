@@ -17,30 +17,53 @@ module.exports.create= async function(req,res){
         content: req.body.content,
         user: req.user.id
     });
-    await newPost.save();
+    let post = await newPost.save();
+    if (req.xhr){
+        //json data must be sent with a status code:
+        return res.status(200).json({
+            data: {
+                post:post,
+                post_id:post.id
+            },
+            message: "Post Published"
+        })
+    }
 
     req.flash('success',"Your Post has been Published!!");
     return res.redirect('back')
 };
 
-module.exports.destroy= function(req,res){
-    Post.findById(req.params.id).then(
-        function(post){
-            if (post.user==req.user.id){
-                console.log("post.user==req.user.id");
-                post.deleteOne();
+module.exports.destroy= async function(req,res){
+    try{
+        let post = await Post.findById(req.params.id);
 
-                Comment.deleteMany({post:req.params.id}).catch((error)=> console.log(error));
-                return res.redirect('back');
+        if (post.user==req.user.id){
+            post.deleteOne();
+            // console.log(typeof(req.params.id));
+
+            Comment.deleteMany({post:req.params.id}).catch((error)=> console.log(error));
+            
+
+            if(req.xhr){
+                return res.status(200).json({
+                    data:{
+                        post_id: req.params.id
+                    },
+                    message:"Post got deleted"
+                })
             }
-            else{
-                return res.redirect('back');
-            }
+
+            return res.redirect('back');
+
         }
-    ).catch(
-        function(error){
-            req.flash('error', 'Failed to delete the Post')
+        else{
+            console.log("could not delete post");
             return res.redirect('back');
         }
-    )
+    }catch(error){
+        console.log(error);
+        return res.redirect('back');
+
+    }
+   
 }
