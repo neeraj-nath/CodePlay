@@ -7,6 +7,8 @@ const db= require('./config/mongoose');
 const session= require('express-session'); //this is responsible for AUTOMATICALLY encrypting the key.
 const passport=require('passport');
 const passportLocal= require('./config/passport-local-strategy');
+const passportJWT = require('./config/passport-jwt-strategy');
+const passportGoogle = require('./config/passport-google-oauth2-strategy');
 const MongoStore= require('connect-mongo'); 
 //above code to store session cookie in mongo db
 const sassMiddleware= require('node-sass-middleware');

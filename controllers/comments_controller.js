@@ -1,5 +1,9 @@
 const Comment= require('../models/comment');
 const Post= require('../models/post');
+const commentsMailer = require('../mailers/comments_mailer');
+const commentEmailWorker = require('../workers/comment_email_worker');
+const queue = require('../config/kue');
+
 
 module.exports.create= async function(req,res){
     // Post.findById(req.body.post).then(
@@ -23,11 +27,12 @@ module.exports.create= async function(req,res){
     //         return;
     //     }
     // )
-    //--------------------------------------------
+    //------------------------------------------------------------------------------------------------------
     // we will try converting the above code into async await
+    
     try{
         let post = await Post.findById(req.body.post);
-        const newComment= new Comment({
+        let newComment= new Comment({
             content:req.body.content,
             post:post._id,
             user:req.user.id
@@ -35,8 +40,20 @@ module.exports.create= async function(req,res){
         await newComment.save();
 
         post.comments.push(newComment);
-
+        
         await post.save();
+
+        newComment= await newComment.populate('user','name email');// need to know how populaet method works and takes arguments.
+
+        //commentsMailer.newComment(newComment);
+        let job = queue.create('emails', newComment).save(function(error){
+            if(error){
+                console.log("error inside queue.create-->>",error);
+                return;
+            }
+            console.log("entered queue.creata and the job id is-->>",job.id);
+
+        });
 
         console.log("Comment added to the post");
 
