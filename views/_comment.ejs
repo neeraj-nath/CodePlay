@@ -1,6 +1,6 @@
 
 <% if(locals.user){ %>
-    <form action="/comments/create" method="POST">
+    <form id="post-<%=post._id%>-comment-form" action="/comments/create" method="POST">
         <input type="text" name="content" placeholder="Comment Here..." required>
         <!-- IMP NOTE:The below input field takes in the post id to store in DB and is hidden -->
         <input type="hidden" name="post" value="<%= post._id%>">
@@ -13,17 +13,31 @@
         <% for(comment of post.comments) { %>
             <li id="comment-<%= comment._id%>">
                 <p>
-                    <%= comment.user.name %> commented:
+                    <!-- <%= comment %>
+                    <br> -->
+                    <%=comment.user.name%> commented:
                 </p>
                 <p>
                     <%= comment.content %>
-                    <% if (locals.user && locals.user.id==comment.user.id) {%>
-                        <a href="/comments/destroy/<%= comment.id %>">
+                    <% if (locals.user && locals.user.id==comment.user) {%>
+                        <a class="delete-comment-btn" href="/comments/destroy/<%=comment.id%>">
                             <i class="fa-solid fa-trash"></i>
                         </a>
-                    <% } %>
-                    
+                    <% } %>    
                 </p>
+                <small>
+                    <% if(locals.user) {%>
+                        <a class="like-toggle-btn" data-likes="<%=comment.likes.length%>" 
+                            href="/likes/toggle/?id=<%= comment._id%>&type=Comment">
+                            <i class="fa-regular fa-heart"></i>
+                            <span id="likes-count"><%= comment.likes.length%></span> 
+                        </a>
+                    <%} else {%>
+                        <i class="fa-regular fa-heart"></i>
+                        <span id="likes-count"><%= comment.likes.length%></span> 
+                    <% } %>
+
+                </small>
 
 
             </li>

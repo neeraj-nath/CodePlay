@@ -3,6 +3,7 @@
     margin-top: 90px;
     margin-bottom: 100px;
     text-align: center;
+    text-decoration: none;
     li{
         list-style: none;
     }
@@ -25,5 +26,10 @@
             color: black;
         }
     }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+
 
 }

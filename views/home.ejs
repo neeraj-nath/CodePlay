@@ -1,4 +1,3 @@
-<!-- <link rel="stylesheet" href="/css/home.css"> -->
 <div id="main-display">
     <div id="center-display">
         <h2>
@@ -30,5 +29,14 @@
             <% } %>
         </section>
     </div>
+    <script src="/js/home_post_comments.js"></script>
     <script src="/js/home_posts.js"></script>
+    <script src="/js/toggle_likes.js"></script>
+    <script>
+        $('.like-toggle-btn').each(function(){
+            let self = this;
+            let toggleLike = new ToggleLike(self);
+        })
+        
+    </script>
 </div>

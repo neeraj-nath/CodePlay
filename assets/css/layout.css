@@ -1,6 +1,11 @@
+:root {
+  text-decoration: none; }
+
 html {
-  font-family: courier; }
+  font-family: courier;
+  text-decoration: none; }
 
 body {
   margin: 0;
-  text-align: center; }
+  text-align: center;
+  text-decoration: none; }

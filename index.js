@@ -1,19 +1,23 @@
-const express=require('express');
-const cookieParser= require('cookie-parser');
-const port=8000;
-const app= express();
-const expressLayouts= require('express-ejs-layouts');
-const db= require('./config/mongoose');
-const session= require('express-session'); //this is responsible for AUTOMATICALLY encrypting the key.
-const passport=require('passport');
-const passportLocal= require('./config/passport-local-strategy');
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const port = 8000;
+const app = express();
+const expressLayouts = require('express-ejs-layouts');
+const db = require('./config/mongoose');
+const session = require('express-session'); //this is responsible for AUTOMATICALLY encrypting the key.
+const passport = require('passport');
+const passportLocal = require('./config/passport-local-strategy');
 const passportJWT = require('./config/passport-jwt-strategy');
 const passportGoogle = require('./config/passport-google-oauth2-strategy');
-const MongoStore= require('connect-mongo'); 
+const MongoStore = require('connect-mongo'); 
 //above code to store session cookie in mongo db
-const sassMiddleware= require('node-sass-middleware');
+const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
-const customMiddleWare= require('./config/middleware');
+const customMiddleWare = require('./config/middleware');
+
+// setup the chat server to be used with socket.io :
+
+
 
 
 app.use(sassMiddleware({

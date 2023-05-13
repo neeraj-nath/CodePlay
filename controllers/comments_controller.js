@@ -3,6 +3,7 @@ const Post= require('../models/post');
 const commentsMailer = require('../mailers/comments_mailer');
 const commentEmailWorker = require('../workers/comment_email_worker');
 const queue = require('../config/kue');
+const Like = require('../models/like');
 
 
 module.exports.create= async function(req,res){
@@ -35,7 +36,7 @@ module.exports.create= async function(req,res){
         let newComment= new Comment({
             content:req.body.content,
             post:post._id,
-            user:req.user.id
+            user:req.user._id
         });
         await newComment.save();
 
@@ -54,6 +55,16 @@ module.exports.create= async function(req,res){
             console.log("entered queue.creata and the job id is-->>",job.id);
 
         });
+        if (req.xhr){
+                
+    
+            return res.status(200).json({
+                data: {
+                    comment: newComment
+                },
+                message: "New comment has been added..!!!!"
+            });
+        }
 
         console.log("Comment added to the post");
 
@@ -70,18 +81,41 @@ module.exports.create= async function(req,res){
 }
 
 module.exports.destroy= function(req,res){
-    Comment.findById(req.params.id).then(
-        function (comment){
-            if (comment.user==req.user.id){
-                let postId= comment.post;
-                comment.deleteOne();
-                Post.findByIdAndUpdate(postId,{$pull:{comment:req.params.id}});
-                return res.redirect('back');
+    try{
+        Comment.findById(req.params.id).then(
+            async function (comment){
+                if (comment.user==req.user.id){
+                    let postId= comment.post;
+                    console.log(comment);
+
+                    comment.deleteOne();
+
+                    Post.findByIdAndUpdate(postId,{$pull:{comment:req.params.id}});
+
+                    // To delete the likes when the comment gets deleted.
+                    await Like.deleteMany({likeable: comment._id, onModel:'Comment'});
+
+                    if (req.xhr){
+                        return res.status(200).json({
+                            data: {
+                                comment_id: req.params.id
+                            },
+                            message: "Comment Deleted..!!"
+                        });
+                    }
+                    return res.redirect('back');
+                }
+                else{
+                    console.log('Some Error Occured while deleting the comment');
+                    return res.redirect('back');
+                }
             }
-            else{
-                console.log('Some Error Occured while deleting the comment');
-                return res.redirect('back');
-            }
-        }
-    )
+        )
+
+    }
+    catch(error){
+        console.log('Error faced in deleting the comment inside the controller of comments');
+        return;
+    }
+    
 }

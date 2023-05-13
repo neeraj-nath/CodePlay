@@ -27,9 +27,21 @@
                         </a>
                     <% } %>
                 </p>
+                <div>
+                    <% if(locals.user) {%>
+                        <a class="like-toggle-btn" data-likes="<%= post.likes.length%>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
+                            <i class="fa-regular fa-heart"></i>
+                            <span id="likes-count"><%= post.likes.length%></span> 
+                        </a>
+                    <%} else {%>
+                        <i class="fa-regular fa-heart"></i>
+                        <span id="likes-count"><%= post.likes.length%></span> 
+                    <% } %>
+                </div>
                 <div class="post-comments">
                     <%- include('_comment') -%>
                 </div>
+               
                 
             </li>
 

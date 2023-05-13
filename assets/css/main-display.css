@@ -2,7 +2,8 @@
   display: flex;
   margin-top: 90px;
   margin-bottom: 100px;
-  text-align: center; }
+  text-align: center;
+  text-decoration: none; }
   #main-display li {
     list-style: none; }
   #main-display h1 {
@@ -18,3 +19,6 @@
     #main-display #user-list a {
       text-decoration: none;
       color: black; }
+  #main-display a {
+    text-decoration: none;
+    color: black; }
