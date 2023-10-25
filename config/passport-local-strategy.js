@@ -10,6 +10,9 @@ passport.use(new LocalStrategy({
     function(req,email,password,done){
         User.findOne({email:email}).then(
             function(user){
+                if(user==null){
+                    return done(null,null);
+                }
                 if(user.password==password){
                     return done(null,user);
                 }

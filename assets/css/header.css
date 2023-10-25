@@ -2,13 +2,21 @@ header {
   width: 100vw;
   display: flex;
   justify-content: space-between;
-  background-color: #1A120B;
+  padding: 0 2rem;
+  background-color: #146C94;
+  background-color: #0F0F0F;
+  background-color: #F5F7F8;
   position: fixed;
-  top: 0px; }
+  top: 0px;
+  height: 70px;
+  box-shadow: 1px 2px 2px grey; }
   header h1 {
     display: inline-block;
-    color: #F4F4F4; }
+    color: #F4F4F4;
+    color: black;
+    margin-bottom: 25px; }
   header ul {
+    margin-right: 4rem;
     display: inline-flex;
     justify-content: space-around;
     width: 20vw;
@@ -16,5 +24,11 @@ header {
     header ul li {
       list-style: none; }
       header ul li a {
+        padding: 8px;
+        border-radius: 10px;
         text-decoration: none;
-        color: #F4F4F4; }
+        color: #F4F4F4;
+        color: black; }
+        header ul li a:hover {
+          color: #F4F4F4;
+          background-color: #0F0F0F; }

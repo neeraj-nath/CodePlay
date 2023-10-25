@@ -1,24 +1,72 @@
 #main-display {
   display: flex;
-  margin-top: 90px;
-  margin-bottom: 100px;
+  position: fixed;
+  left: 29.5vw;
+  top: 10.5vh;
+  border-radius: 10px;
+  width: 70vw;
+  height: 81vh;
+  color: whitesmoke;
+  color: #E8E8E8;
   text-align: center;
   text-decoration: none; }
   #main-display li {
-    list-style: none; }
+    list-style: none;
+    padding: 5px; }
   #main-display h1 {
     display: inline-block; }
   #main-display #center-display {
-    width: 70%;
+    width: 80%;
     padding: 20px;
-    border-right: 2px dashed slategray; }
+    border-right: 2px dashed slategray;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #9db2bf;
+    background-color: #0e0f0e;
+    margin-right: 5px; }
+    #main-display #center-display .welcome-panel {
+      padding: 2rem;
+      border-radius: 10px; }
   #main-display #user-list {
-    height: 100%;
     width: 30%;
-    padding: 20px; }
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #9db2bf;
+    background-color: #DDE6ED;
+    background-color: #040D12;
+    background-color: #0e0f0e;
+    color: whitesmoke; }
     #main-display #user-list a {
       text-decoration: none;
-      color: black; }
+      color: black;
+      color: whitesmoke; }
   #main-display a {
     text-decoration: none;
-    color: black; }
+    color: black;
+    color: whitesmoke; }
+  #main-display #feed-posts {
+    background-color: #343A40;
+    background-color: #73777B;
+    height: 60%;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-y: scroll; }
+    #main-display #feed-posts input {
+      height: 40px;
+      width: 120px;
+      border-radius: 10px;
+      background-color: black;
+      color: white; }
+    #main-display #feed-posts #comment-field {
+      height: 40px;
+      width: 120px;
+      border-radius: 10px;
+      background-color: whitesmoke;
+      color: black; }
+  #main-display #post-list-container {
+    background-color: #373A40;
+    background-color: #1B262C;
+    background-color: #73777B;
+    background-color: #343A40;
+    border-radius: 8px; }

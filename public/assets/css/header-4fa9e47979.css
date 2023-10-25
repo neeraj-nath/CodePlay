@@ -1,0 +1,20 @@
+header {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  background-color: #146C94;
+  position: fixed;
+  top: 0px; }
+  header h1 {
+    display: inline-block;
+    color: #F4F4F4; }
+  header ul {
+    display: inline-flex;
+    justify-content: space-around;
+    width: 20vw;
+    line-height: 0.2; }
+    header ul li {
+      list-style: none; }
+      header ul li a {
+        text-decoration: none;
+        color: #F4F4F4; }

@@ -1,11 +1,21 @@
 footer {
-  background-color: #1A120B;
-  color: whitesmoke;
+  background-color: #146c94;
+  background-color: #0f0f0f;
+  background-color: #f5f7f8;
+  padding: 0 1.5rem;
+  color: black;
   display: flex;
   width: 100vw;
   justify-content: space-between;
   position: fixed;
-  bottom: 0px; }
+  bottom: 0px;
+  box-shadow: 1px -2px 2px grey; }
   footer a {
     text-decoration: none;
-    color: whitesmoke; }
+    color: whitesmoke;
+    color: black;
+    padding: 8px;
+    border-radius: 10px; }
+    footer a:hover {
+      color: #f4f4f4;
+      background-color: #0f0f0f; }

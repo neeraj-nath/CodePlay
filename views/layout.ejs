@@ -1,79 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%-style %>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
-    <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/aside.css">
-    <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="/css/flash-msgs.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/main-display.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css"
+    />
+    <link rel="stylesheet" href="<%=assetPath('css/header.css')%>" />
+    <link rel="stylesheet" href="<%=assetPath('css/aside.css')%>" />
+    <link rel="stylesheet" href="<%=assetPath('css/layout.css')%>" />
+    <link rel="stylesheet" href="<%=assetPath('css/chatbox.css')%>" />
+    <link rel="stylesheet" href="<%=assetPath('css/flash-msgs.css')%>" />
+    <link rel="stylesheet" href="<%=assetPath('css/footer.css')%>" />
+    <link rel="stylesheet" href="<%=assetPath('css/main-display.css')%>" />
+    <link rel="stylesheet" href="<%=assetPath('css/sign-in.css')%>" />
+    <link rel="stylesheet" href="<%=assetPath('css/sign-up.css')%>" />
+    <link rel="stylesheet" href="<%=assetPath('css/profile.css')%>" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-    <script src="https://kit.fontawesome.com/f6d34634c2.js" crossorigin="anonymous"></script>
-    <title>CodEiAl</title>
-</head>
-<body>
-    <%- include('_header') %>
-    <%- include('aside') %>
- 
-    
-        
-    
-
-    <%- body %>
-    <%- include('_chatbox')%>
-
-    <%- include('_footer') %>
-
-    <%-script %>
+    <script
+      src="https://kit.fontawesome.com/f6d34634c2.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <title>CodePlay</title>
+  </head>
+  <body>
+    <%- include('_header') %> <%- include('aside') %> <%- body %> <%-
+    include('_footer') %> <%-script %>
     <script>
-        //To show the noty flash notifications below code is added inside script tag
-        <% if(flash.success && flash.success.length > 0 ) { %>
-            
-            new Noty({
-                theme:'sunset',
-                text: '<%= flash.success %>',
-                type: 'success',
-                layout: 'topRight',
-                timeout:2000
+      //To show the noty flash notifications below code is added inside script tag
+      <% if(flash.success && flash.success.length > 0 ) { %>
 
-            }).show();
-            
-        <% } %>
+          new Noty({
+              theme:'sunset',
+              text: '<%= flash.success %>',
+              type: 'success',
+              layout: 'topRight',
+              timeout:2000
 
-        // <% if(flash.info && flash.info.length > 0 ) { %>
-            
-        //     new Noty({
-        //         theme:'sunset',
-        //         text: '<%= flash.info %>',
-        //         type: 'alert',
-        //         layout: 'topRight',
-        //         timeout:2000
+          }).show();
 
-        //     }).show();
-            
-        // <% } %>
+      <% } %>
 
-        <% if(flash.error && flash.error.length > 0 ) { %>
-            
-            new Noty({
-                theme:'sunset',
-                text: '<%= flash.error %>',
-                type: 'error',
-                layout: 'topRight',
-                timeout:2000
+      // <% if(flash.info && flash.info.length > 0 ) { %>
 
-            }).show();
-            
-        <% } %>
-        
+      //     new Noty({
+      //         theme:'sunset',
+      //         text: '<%= flash.info %>',
+      //         type: 'alert',
+      //         layout: 'topRight',
+      //         timeout:2000
+
+      //     }).show();
+
+      // <% } %>
+
+      <% if(flash.error && flash.error.length > 0 ) { %>
+
+          new Noty({
+              theme:'sunset',
+              text: '<%= flash.error %>',
+              type: 'error',
+              layout: 'topRight',
+              timeout:2000
+
+          }).show();
+
+      <% } %>
     </script>
-</body>
+  </body>
 </html>

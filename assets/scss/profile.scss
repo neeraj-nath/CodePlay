@@ -1,0 +1,47 @@
+#profile {
+  margin-left: 20vw;
+  margin-top: 12vh;
+  display: flex;
+  flex-direction: column;
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    .field-input {
+      height: 40px;
+      width: 40%;
+      background-color: #7f8487;
+      color: whitesmoke;
+      text-align: center;
+      border: none;
+      border-radius: 20px;
+    }
+    .field-input::placeholder {
+      color: whitesmoke;
+    }
+    // button{
+    //     height:40px;
+    //     width:30%;
+    //     background-color: #1A120B;
+    //     color:whitesmoke;
+    //     text-align: center;
+    //     border: none;
+    //     border-radius: 20px;
+    // }
+    #file-upload {
+      // height: 25px;
+      // width:auto;
+      // border-radius: 10px;
+      // background-color: black;
+      // text-align: center;
+    }
+    #btn {
+      height: 40px;
+      width: 120px;
+      border-radius: 10px;
+      background-color: black;
+      color: white;
+    }
+  }
+}

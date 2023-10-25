@@ -1,5 +1,5 @@
 
-<h3>Your Feed and Posts:</h3>
+<h3 class="feed-posts">Your Feed and Posts:</h3>
     <% if (locals.user) { %>
         <form action="/posts/create" id="new-post-form" method="POST">
             <h4>
@@ -9,7 +9,7 @@
 
             </textarea>
             <br>
-            <input type="submit" value="Post">
+            <input id="post-submit-btn" type="submit" value="Post">
         </form>
     <% } %>
 <div id="post-list-container">

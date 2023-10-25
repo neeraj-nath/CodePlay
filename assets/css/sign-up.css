@@ -1,4 +1,5 @@
-div {
-  margin-top: 100px; }
-  div h1 {
+#sign-up {
+  margin-top: 100px;
+  margin-left: 60vh; }
+  #sign-up h1 {
     display: inline-block; }

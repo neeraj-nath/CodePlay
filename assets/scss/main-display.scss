@@ -1,35 +1,100 @@
-#main-display{
-    display: flex;
-    margin-top: 90px;
-    margin-bottom: 100px;
-    text-align: center;
+#main-display {
+  display: flex;
+  position: fixed;
+  left: 29.5vw;
+  top: 10.5vh;
+  // margin-top: 90px;
+  // border : 2px solid black;
+  border-radius: 10px;
+  // background-color: #D0D4CA;
+  // background-color: #9DB2BF;
+  width: 70vw;
+  height: 81vh;
+  color:whitesmoke;
+  color: #E8E8E8;
+  // text-align: center;
+
+  // margin-bottom: 100px;
+  text-align: center;
+  text-decoration: none;
+  li {
+    list-style: none;
+    padding: 5px;
+  }
+
+  h1 {
+    display: inline-block;
+  }
+  #center-display {
+    width: 80%;
+    padding: 20px;
+    border-right: 2px dashed slategray;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #9db2bf;
+    background-color: #0e0f0e;
+    margin-right: 5px;
+    .welcome-panel{
+      // background-color: #D0D4CA;
+      // background-color: #DDDDDD;
+      // background-color: #F5F5F5;
+      
+      padding:2rem;
+      border-radius: 10px;
+    }
+  }
+  #user-list {
+    // height: 100%;
+    width: 30%;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #9db2bf;
+    background-color: #DDE6ED;
+    background-color: #040D12;
+    background-color: #0e0f0e;
+    color: whitesmoke;
+
+    a {
+      text-decoration: none;
+      color: black;
+      color: whitesmoke;
+    }
+  }
+  a {
     text-decoration: none;
-    li{
-        list-style: none;
+    color: black;
+    color: whitesmoke;
+  }
+  #feed-posts{
+    background-color: #343A40;
+    background-color: #73777B;
+    // background-color: #EEEEEE;
+    height: 60%;
+    padding : 10px;
+    border-radius: 5px;
+    overflow-y: scroll;
+    input{
+      height: 40px;
+      width: 120px;
+      border-radius: 10px;
+      background-color: black;
+      color: white;
+    }
+    #comment-field{
+      height: 40px;
+      width: 120px;
+      border-radius: 10px;
+      background-color: whitesmoke;
+      color:black;
     }
 
-    h1{
-        display: inline-block;
-    }
-    #center-display{
-        width:70%;
-        padding: 20px;
-        border-right: 2px dashed slategray;
-    }
-    #user-list{
-        height: 100%;
-        width:30%;
-        padding:20px;
-        
-        a{
-            text-decoration: none;
-            color: black;
-        }
-    }
-    a{
-        text-decoration: none;
-        color: black;
-    }
-
-
+  }
+  #post-list-container{
+    background-color: #373A40;
+    background-color: #1B262C;
+    background-color: #73777B;
+    background-color: #343A40;
+    border-radius: 8px;
+  }
 }

@@ -1,0 +1,26 @@
+#profile {
+  margin-left: 20vw;
+  margin-top: 12vh;
+  display: flex;
+  flex-direction: column; }
+  #profile form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center; }
+    #profile form .field-input {
+      height: 40px;
+      width: 40%;
+      background-color: #7f8487;
+      color: whitesmoke;
+      text-align: center;
+      border: none;
+      border-radius: 20px; }
+    #profile form .field-input::placeholder {
+      color: whitesmoke; }
+    #profile form #btn {
+      height: 40px;
+      width: 120px;
+      border-radius: 10px;
+      background-color: black;
+      color: white; }

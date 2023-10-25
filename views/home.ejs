@@ -1,42 +1,46 @@
 <div id="main-display">
-    <div id="center-display">
-        <h2>
-            Welcome to CoDEial!!
-        </h2>
-        <div>
-            <p>
-                CoDEial is a platform created with an idea to provide developers and programmers a
-                place to meet..
-            </p>
-        </div>
-        <section id="feed-posts">
-            <%- include('_post') -%>
-        </section>
+  <div id="center-display">
+    <div class="welcome-panel">
+      <h2>Welcome to CodePlay!!</h2>
+
+      <p>
+        CodePlay is a platform created with an idea to provide developers and
+        programmers a place to meet, share ideas and help them grow.
+      </p>
     </div>
-    <div id="user-list">
-        <section id="">
-            <h3>
-                Users:
-            </h3>
-            <% if (locals.user) {%>
-                <% for (u of all_users){%>
-                    <% if (String(u._id) != locals.user._id) { %>
-                        <a href="/users/profile/<%= u.id %>"><%= u.name%></a>
-                        <br>
-                    <% } %>
-                
-                <% } %>
-            <% } %>
-        </section>
-    </div>
-    <script src="/js/home_post_comments.js"></script>
-    <script src="/js/home_posts.js"></script>
-    <script src="/js/toggle_likes.js"></script>
-    <script>
-        $('.like-toggle-btn').each(function(){
-            let self = this;
-            let toggleLike = new ToggleLike(self);
-        })
-        
-    </script>
+    <section id="feed-posts"><%- include('_post') -%></section>
+  </div>
+  <div id="user-list">
+    <section id="">
+      <h3>Users:</h3>
+      <% if (locals.user) {%> <% for (u of all_users){%> <% if (String(u._id) !=
+      locals.user._id) { %>
+      <a href="/users/profile/<%= u.id %>"><%= u.name%></a>
+      <br />
+      <% } %> <% } %> <% } %>
+    </section>
+  </div>
+  
+  <script src="/js/home_post_comments.js"></script>
+  <script src="/js/home_posts.js"></script>
+  <script src="/js/toggle_likes.js"></script>
+  <script>
+    $(".like-toggle-btn").each(function () {
+      let self = this;
+      let toggleLike = new ToggleLike(self);
+    });
+  </script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"
+    integrity="sha512-59oxERSDGj1eMzmFW3acSaBHEMNi2GaeQC7nQYcTqM0vgcnavi4BpUhLkcJQE2G6fdtn8JVj7brt0EZuBV0ogQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <!-- socket.io implementation commented due to error  -->
+  <!-- <script src="/js/chat_engine.js"></script>
+    <% if (locals.user) { %>
+        <script>
+            new ChatEngine('user-chat-box','<%= locals.user.email %>');
+        </script>
+    <% } %> -->
 </div>

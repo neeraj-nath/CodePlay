@@ -1,13 +1,32 @@
 aside{
-    height: 100vh;
-    width:30vw;
-    background-color: #423F3E;
-    float:left;
-    margin-top: -21px;
+    // display: none;
+    height: 81vh;
+    width:29vw;
+    background-color: #146C94;
+    background-color: #9db2bf;
+    background-color: #0e0f0e;
+    position: fixed;
+    // margin-top: -21px;
+    top : 75px;
+    left : 2px;
     text-align: center;
     color: whitesmoke;
+    color:#E8E8E8;
+    border-radius: 10px;
     img{
         width:100%;
+        border-radius: 10px;
         height: auto;
+    }
+    p{
+        padding: 2px;
+    }
+    p:hover{
+        // background-color: black;
+        border-radius : 5px;
+        font-size: larger;
+        box-shadow: 1px 2px 2px grey;
+        color:#B2B1B9;
+
     }
 }

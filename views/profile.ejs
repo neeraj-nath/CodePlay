@@ -1,5 +1,5 @@
 
-<div id="main-display">
+<div id="profile">
     <img src="<%= user.avatar%>" alt="<%= user.name%>" width="100" height="auto">
     <h1>
         Hey <%= profile_user.name%>
@@ -11,14 +11,14 @@
     <% if (locals.user.id==profile_user.id) {%>
         <div>
             <form action="/users/update/<%= profile_user.id %>" enctype="multipart/form-data" method="POST" >
-                <input type="text" name="name" placeholder="Your Name" id="" required>
+                <input class="field-input" type="text" name="name" placeholder="Your Name" id="" required>
                 <br><br>
-                <input type="text" name="email" placeholder="Your email" required>
+                <input class="field-input" type="text" name="email" placeholder="Your email" required>
                 <br><br>
-                <input type="file" name="avatar" placeholder="Profile Picture" >
+                <input id="file-upload" type="file" name="avatar" placeholder="Profile Picture" >
                 <!--#### becoz I didnt provide the name for the file multer was not able to create a file entity,hence req.file was undefined -->
                 <br><br>
-                <input type="submit" value="Update">
+                <input id="btn" type="submit" value="Update">
             </form>
         </div>
     <% } %>

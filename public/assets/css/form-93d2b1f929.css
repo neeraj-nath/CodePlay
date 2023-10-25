@@ -1,0 +1,23 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center; }
+  form input {
+    height: 40px;
+    width: 40%;
+    background-color: #7F8487;
+    color: whitesmoke;
+    text-align: center;
+    border: none;
+    border-radius: 20px; }
+  form input::placeholder {
+    color: whitesmoke; }
+  form button {
+    height: 40px;
+    width: 30%;
+    background-color: #1A120B;
+    color: whitesmoke;
+    text-align: center;
+    border: none;
+    border-radius: 20px; }
