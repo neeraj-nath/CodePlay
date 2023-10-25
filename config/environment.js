@@ -23,13 +23,13 @@ const development = {
         port: 587,
         secure : false,
         auth:{
-            user : 'neeraj.nath987@gmail.com',
-            pass : 'ckyjkifuupvkakla',
+            user : '',
+            pass : '',
         }
     },
-    google_client_Id : "73401975254-vahg37ebnlcjl2f11c99scofcrogql0v.apps.googleusercontent.com",
-    google_client_secret : "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",
-    google_callback_URL : "http://localhost:8000/users/auth/google/callback",
+    google_client_Id : "",
+    google_client_secret : "",
+    google_callback_URL : "",
     jwt_secret: 'codeial',
     morgan: {
         mode: 'dev',
