@@ -12,31 +12,7 @@ const accessLogStream = rfs.createStream('access.log',{
     path: logDirectory
 });
 
-const development = {
-    name : 'development',
-    asset_path : 'assets',
-    session_cookie_key : 'blahsomething',
-    db : 'codeial_development',
-    smtp:{
-        service: 'gmail',
-        host : 'smtp.gmail.com',
-        port: 587,
-        secure : false,
-        auth:{
-            user : '',
-            pass : '',
-        }
-    },
-    google_client_Id : "",
-    google_client_secret : "",
-    google_callback_URL : "",
-    jwt_secret: 'codeial',
-    morgan: {
-        mode: 'dev',
-        options: {stream: accessLogStream}
-    }
 
-}
 
 const production = {
     name : 'production',
@@ -64,4 +40,4 @@ const production = {
 }
 
 //eval(process.env.CODEIAL_ENVIRONMENT) == undefined ? development : eval(process.env.CODEIAL_ENVIRONMENT)
-module.exports = development;
+module.exports = production;
